@@ -10,10 +10,12 @@ public class Parque implements IParque{
 	private int contadorPersonasTotales;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
 	
+	private final int aforo;
 	
-	public Parque() {
+	public Parque(int aforo) {
 		contadorPersonasTotales = 0;
 		contadoresPersonasPuerta = new Hashtable<String, Integer>();
+		this.aforo = aforo;
 	}
 
 
@@ -23,6 +25,7 @@ public class Parque implements IParque{
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
+			
 		}
 		
 		// TODO
