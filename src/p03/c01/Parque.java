@@ -80,15 +80,11 @@ public class Parque implements IParque{
 	}
 
 	protected void comprobarAntesDeEntrar(){
-		//
-		// TODO
-		//
+		assert sumarContadoresPuerta() < getAforo() : "No se puede entrar al parque ¡Aforo completo!";
 	}
 
 	protected void comprobarAntesDeSalir(){
-		//
-		// TODO
-		//
+		assert sumarContadoresPuerta() != 0 : "No se puede salir del parque ¡No hay gente en el parque!";
 	}
 
 
@@ -98,5 +94,7 @@ public class Parque implements IParque{
 		
 	}
 
-
+	private int getAforo() {
+		return this.aforo;
+	}
 }
