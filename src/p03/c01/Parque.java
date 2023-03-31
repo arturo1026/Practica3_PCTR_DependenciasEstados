@@ -78,17 +78,7 @@ public class Parque implements IParque{
 		
 	}
 
-	protected void comprobarAntesDeEntrar(){
-		while(contadorPersonasTotales == aforo) {
-			try {
-				this.wait();	
-			}catch(InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-		}
-		
-	}
+	
 
 	protected void comprobarAntesDeSalir(){
 		while(contadorPersonasTotales == 0) {
@@ -109,7 +99,7 @@ public class Parque implements IParque{
 		
 	}
 
-	private int getAforo() {
+	public int getAforo() {
 		return this.aforo;
 	}
 }
