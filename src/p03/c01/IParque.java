@@ -7,6 +7,7 @@ public interface IParque {
 	public abstract void salirDelParque(String puerta);
 	
 	public abstract int getAforo();
+	
 	// TODO
 	//me deja hacer commit
 }

@@ -1,7 +1,6 @@
 package src.p03.c01;
 
-import src.p03.c01.IParque;
-import src.p03.c01.Parque;
+
 
 public class AdaptadorParqueSincronizado implements IParque{
 
@@ -44,11 +43,13 @@ public class AdaptadorParqueSincronizado implements IParque{
 		while(contadorPersonasTotales == 50) {
 			try {
 				this.wait();	
+				
 			}catch(InterruptedException e) {
 				e.printStackTrace();
 			}
 			
 		}
+		this.notify();
 		
 	}
 	
@@ -56,12 +57,20 @@ public class AdaptadorParqueSincronizado implements IParque{
 		while(contadorPersonasTotales == 0) {
 			try {
 				this.wait();	
+
 			}catch(InterruptedException e) {
 				e.printStackTrace();
 			}
 			
 		}
+		this.notify();
 		
+	}
+
+	@Override
+	public int getAforo() {
+		// TODO Auto-generated method stub
+		return parque.getAforo();
 	}
 
 }

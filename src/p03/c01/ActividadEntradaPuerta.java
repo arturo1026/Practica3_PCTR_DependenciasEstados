@@ -18,8 +18,9 @@ public class ActividadEntradaPuerta implements Runnable{
 
 		@Override
 		public void run() {
-			for (int i = 0; i < NUMENTRADAS; i ++) {
+			for (int i = 0; i <= NUMENTRADAS; i ++) {
 				try {
+					
 					parque.entrarAlParque(puerta);
 					TimeUnit.MILLISECONDS.sleep(new Random().nextInt(5)*1000);
 				} catch (InterruptedException e) {

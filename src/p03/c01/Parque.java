@@ -69,7 +69,7 @@ public class Parque implements IParque{
 		return sumaContadoresPuerta;
 	}
 	
-	protected void checkInvariante() {
+	public void checkInvariante() {
 		assert sumarContadoresPuerta() == contadorPersonasTotales : "INV: La suma de contadores de las puertas debe ser igual al valor del contador del parte";
 		assert sumarContadoresPuerta() <= aforo : "INV: El aforo maximo permitido ha sido superado";
 		assert sumarContadoresPuerta() >= 0 : "INV: El parque se encuentra vacio";
@@ -80,22 +80,30 @@ public class Parque implements IParque{
 
 	
 
-	protected void comprobarAntesDeSalir(){
-		while(contadorPersonasTotales == 0) {
-			try {
-				this.wait();	
-			}catch(InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-		}
-		
-	}
 
 
 	@Override
-	public void salirDelParque(String puerta) {
-		// TODO Auto-generated method stub
+	public void salirDelParque(String puerta) {		// TODO
+		
+		// Si no hay entradas por esa puerta, inicializamos
+		if (contadoresPersonasPuerta.get(puerta) == null){
+			contadoresPersonasPuerta.put(puerta, 0);
+			
+		}
+		
+		// TODO
+				
+		
+		// Aumentamos el contador total y el individual
+		contadorPersonasTotales--;		
+		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)-1);
+		
+		// Imprimimos el estado del parque
+		imprimirInfo(puerta, "Salida");
+		
+
+		checkInvariante(); //Comprobacion de las invariantes
+		this.notifyAll();  // Notificar a todos los hilos así despertandolos
 		
 	}
 
